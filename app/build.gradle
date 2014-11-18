@@ -1,0 +1,32 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 20
+    buildToolsVersion "20.0.0"
+
+    defaultConfig {
+        applicationId "de.in4matiker.myo"
+        minSdkVersion 19
+        targetSdkVersion 20
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    repositories {
+        maven {
+            url '/home/zerghase/Development/myo-android-sdk-0.8.0/myorepository'
+        }
+    }
+
+    compile('com.thalmic:myosdk:0.8.+@aar')
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}
